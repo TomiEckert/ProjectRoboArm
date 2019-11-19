@@ -1,6 +1,8 @@
 from flask import Flask
 from flask import request
 import time
+import numpy as np
+import matplotlib.pyplot as plt
 #import atexit
 
 # Importiere die Adafruit PCA9685 Bibliothek
@@ -32,10 +34,12 @@ def web_interface():
 @app.route("/set_servo1")  
 
 def set_servo1():
-  speed = request.args.get("speed")
-  print( "Received " + str(speed))
-  PCA9685_pwm.set_pwm(0, 0, int(speed))
-  return "Received " + str(speed)
+    speed = request.args.get("speed")
+#   speed = np.linspace(0, 2*np.pi, 10)
+#   yinterp = np.interp(speed, x, y)
+    print( "Received " + str(speed))
+    PCA9685_pwm.set_pwm(0, 0, int(speed))
+    return "Received " + str(speed)
 
 @app.route("/set_servo2")  
 
