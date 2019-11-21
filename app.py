@@ -1,9 +1,6 @@
 from flask import Flask
 from flask import request
 import time
-import numpy as np
-import matplotlib.pyplot as plt
-#import atexit
 
 # Importiere die Adafruit PCA9685 Bibliothek
 import Adafruit_PCA9685
@@ -19,7 +16,7 @@ PCA9685_pwm.set_pwm_freq(60)
 
 # Configure min and max servo pulse lengths
 servo_min = 150  # Min pulse length out of 4096
-servo_max = 600  # Max pulse length out of 4096
+servo_max = 520  # Max pulse length out of 4096
 
 app = Flask(__name__)
 
@@ -34,12 +31,10 @@ def web_interface():
 @app.route("/set_servo1")  
 
 def set_servo1():
-    speed = request.args.get("speed")
-#   speed = np.linspace(0, 2*np.pi, 10)
-#   yinterp = np.interp(speed, x, y)
-    print( "Received " + str(speed))
-    PCA9685_pwm.set_pwm(0, 0, int(speed))
-    return "Received " + str(speed)
+  speed = request.args.get("speed")
+  print( "Received " + str(speed))
+  PCA9685_pwm.set_pwm(0, 0, int(speed))
+  return "Received " + str(speed)
 
 @app.route("/set_servo2")  
 
@@ -82,5 +77,5 @@ def set_servo6():
   return "Received " + str(speed)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=69, debug=True)
+    app.run(host='0.0.0.0', port=8181, debug=True)
 
