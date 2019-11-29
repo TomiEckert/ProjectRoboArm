@@ -25,6 +25,15 @@ app = Flask(__name__)
 def web_interface():
   html = open("index.html")
   response = html.read().replace('\n', '')
+
+  ip = subprocess.check_output(["hostname", "-i"])
+  ip = str(ip).replace("b'", "")
+  ip = str(ip).replace(" \\n'", "")
+  if len(str(ip).split(" ")):
+    ip = str(ip).split(" ")
+  
+  response = response.replace('<|IP|>', ip)
+
   html.close()
   return response
 
