@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request
 import time
+import subprocess
 
 # Importiere die Adafruit PCA9685 Bibliothek
 import Adafruit_PCA9685
