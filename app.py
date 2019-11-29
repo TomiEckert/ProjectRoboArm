@@ -27,7 +27,7 @@ def web_interface():
   html = open("index.html")
   response = html.read().replace('\n', '')
 
-  ip = subprocess.check_output(["hostname", "-i"])
+  ip = subprocess.check_output(["hostname", "-I"])
   ip = str(ip).replace("b'", "")
   ip = str(ip).replace(" \\n'", "")
   if len(str(ip).split(" ")):
