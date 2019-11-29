@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request
 import time
+import subprocess
 
 # Importiere die Adafruit PCA9685 Bibliothek
 import Adafruit_PCA9685
@@ -25,6 +26,15 @@ app = Flask(__name__)
 def web_interface():
   html = open("index.html")
   response = html.read().replace('\n', '')
+
+  ip = subprocess.check_output(["hostname", "-I"])
+  ip = str(ip).replace("b'", "")
+  ip = str(ip).replace(" \\n'", "")
+  if len(str(ip).split(" ")):
+    ip = str(ip).split(" ")[1]
+  
+  response = response.replace('<|IP|>', ip)
+
   html.close()
   return response
 
