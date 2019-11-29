@@ -31,7 +31,7 @@ def web_interface():
   ip = str(ip).replace("b'", "")
   ip = str(ip).replace(" \\n'", "")
   if len(str(ip).split(" ")):
-    ip = str(ip).split(" ")
+    ip = str(ip).split(" ")[1]
   
   response = response.replace('<|IP|>', ip)
 
