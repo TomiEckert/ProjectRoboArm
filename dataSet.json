@@ -1,0 +1,151 @@
+[
+    {
+        "input": {
+            "x": 0,
+            "y": 0
+        },
+        "output": {
+            "left": 0
+        }
+    },
+    {
+        "input": {
+            "x": 1,
+            "y": 0
+        },
+        "output": {
+            "right": 1
+        }
+    },
+    {
+        "input": {
+            "x": 0,
+            "y": 1
+        },
+        "output": {
+            "up": 1
+        }
+    },
+    {
+        "input": {
+            "x": 1,
+            "y": 1
+        },
+        "output": {
+            "right": 1,
+            "up": 1
+        }
+    },
+    {
+        "input": {
+            "x": 0.3,
+            "y": 0
+        },
+        "output": {
+            "right": 1
+        }
+    },
+    {
+        "input": {
+            "x": 0,
+            "y": 0.5
+        },
+        "output": {
+            "up": 1
+        }
+    },
+    {
+        "input": {
+            "x": 0.7,
+            "y": 0
+        },
+        "output": {
+            "right": 1
+        }
+    },
+    {
+        "input": {
+            "x": 0,
+            "y": 0.1
+        },
+        "output": {
+            "up": 1
+        }
+    },
+    {
+        "input": {
+            "x": -1,
+            "y": 0
+        },
+        "output": {
+            "left": 1
+        }
+    },
+    {
+        "input": {
+            "x": -0.4,
+            "y": 0
+        },
+        "output": {
+            "left": 1
+        }
+    },
+    {
+        "input": {
+            "x": 0,
+            "y": -1
+        },
+        "output": {
+            "down": 1
+        }
+    },
+    {
+        "input": {
+            "x": 0,
+            "y": -0.3
+        },
+        "output": {
+            "down": 1
+        }
+    },
+    {
+        "input": {
+            "x": -0.8,
+            "y": 0.3
+        },
+        "output": {
+            "left": 1,
+            "up": 1
+        }
+    },
+    {
+        "input": {
+            "x": -0.2,
+            "y": -0.5
+        },
+        "output": {
+            "down": 1,
+            "left": 1
+        }
+    },
+    {
+        "input": {
+            "x": 0.5,
+            "y": -0.4
+        },
+        "output": {
+            "right": 1,
+            "down": 1
+        }
+    },
+    {
+        "input": {
+            "x": 0.1,
+            "y": -0.8
+        },
+        "output": {
+            "down": 1,
+            "right": 1
+        }
+    }
+]
