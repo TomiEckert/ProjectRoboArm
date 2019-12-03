@@ -1,0 +1,14 @@
+language: python
+python:
+  - "3.6"
+
+install:
+  - pip install flask
+  - pip install adafruit-pca9685
+
+script:
+  - pytest
+
+branches:
+  only:
+  - master
