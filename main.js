@@ -31,17 +31,19 @@ const args = new Argv();
 
 switch (args['Method']) {
     case 'run':
-        var rb = new RoboBrain(false);
-        rb.initialize();
+        var rb = "";
+        var ai = "";
         if(args['exported'] === null) {
             try {
+                rb = new RoboBrain(true);
                 rb.loadModel(args['MODEL']);
+                ai = null;
             } catch (error) {
                 console.error("MODEL not found");
                 return false;
             }
         } else {
-
+            ai = RoboBrain.importModel(args['MODEL']);
         }
         var data = isPath(args['DATA']);
         if (data === false) {
@@ -52,9 +54,17 @@ switch (args['Method']) {
             }
         }
         if (args['formatted'] !== null) {
-            rb.formatResult(rb.run(data));
+            if(ai !== null) {
+                RoboBrain.formatResult(ai(data));
+            } else {
+                RoboBrain.formatResult(rb.run(data));
+            }
         } else {
-            console.log(rb.run(data));
+            if(ai !== null) {
+                console.log(ai(data));
+            } else {
+                console.log(rb.run(data));
+            }
         }
 
         break;
@@ -94,5 +104,6 @@ switch (args['Method']) {
         };
         rb.train(data, config);
         rb.saveModel(fileName);
+        rb.exportModel(fileName);
         break;
 }
