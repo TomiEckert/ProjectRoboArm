@@ -21,7 +21,7 @@
     #header {
       float: left;
       width: 100%;
-      height: 80px;
+      height: 120px;
       background-color: rgba(52, 152, 220, 1);
       border-bottom: 1px solid rgba(136, 194, 234, 1);
     }
@@ -30,6 +30,12 @@
       color: white;
       text-align: center;
       padding-top: 20px;
+    }
+
+    #header h5 {
+      color: white;
+      text-align: center;
+      padding-top: 10px;
     }
 
     #wrapper, h2 {
@@ -115,7 +121,8 @@
     }
 </style>
   <div id="header">
-    <h1>Robot Arm Web Browser Control</h1>
+    <h1>Robot Arm Web Router: Xtreme Durability</h1>
+    <h5>RAWR XD</h5>
   </div>
 
   <div id="sidebar">
@@ -127,34 +134,24 @@
   <div id="wrapper">
     <h2>Drag the slider to move the servo.</h2>
     <div id="servo1" class="servo_container">
-      <p>Servo 1</p>
-      <input type="range" min="150" max="600" class="rangeBar" value="0" id="range1" oninput="servo1()">
-      <p>Value servo1: <span id="range1_value"></span></p>
+      <p>Grabber</p>
+      <input type="range" min="350" max="440" class="rangeBar" value="400" id="range1" oninput="servo1()">
+      <p>Value: <span id="range1_value"></span></p>
     </div>
     <div id="servo2" class="servo_container">
-      <p>Servo 2</p>
-      <input type="range" min="150" max="600" class="rangeBar" value="0" id="range2" oninput="servo2()">
-      <p>Value servo2: <span id="range2_value"></span></p>
+      <p>Elbow</p>
+      <input type="range" min="220" max="350" class="rangeBar" value="270" id="range2" oninput="servo2()">
+      <p>Value: <span id="range2_value"></span></p>
     </div>
     <div id="servo3" class="servo_container">
-      <p>Servo 3</p>
-      <input type="range" min="150" max="600" class="rangeBar" value="0" id="range3" oninput="servo3()">
-      <p>Value servo1: <span id="range3_value"></span></p>
+      <p>Shoulder</p>
+      <input type="range" min="420" max="550" class="rangeBar" value="460" id="range3" oninput="servo3()">
+      <p>Value: <span id="range3_value"></span></p>
     </div>
     <div id="servo4" class="servo_container">
-      <p>Servo 4</p>
-      <input type="range" min="150" max="600" class="rangeBar" value="0" id="range4" oninput="servo4()">
-      <p>Value servo2: <span id="range4_value"></span></p>
-    </div>
-    <div id="servo5" class="servo_container">
-      <p>Servo 5</p>
-      <input type="range" min="150" max="600" class="rangeBar" value="0" id="range5" oninput="servo5()">
-      <p>Value servo1: <span id="range5_value"></span></p>
-    </div>
-    <div id="servo6" class="servo_container">
-      <p>Servo 6</p>
-      <input type="range" min="150" max="600" class="rangeBar" value="0" id="range6" oninput="servo6()">
-      <p>Value servo2: <span id="range6_value"></span></p>
+      <p>Base</p>
+      <input type="range" min="190" max="510" class="rangeBar" value="310" id="range4" oninput="servo4()">
+      <p>Value: <span id="range4_value"></span></p>
     </div>
   </div>
 </body>
