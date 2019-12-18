@@ -50,6 +50,7 @@ def set_coordinates():
   coords = request.args.get("coords")
   xCoord = coords.split(":")[0]
   yCoord = coords.split(":")[1]
+  
   values = ai.getValues(xCoord, yCoord)
   servos.set_elbow(values[0])
   servos.set_shoulder(values[1])
