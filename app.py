@@ -5,7 +5,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import time
 import subprocess
-import servos
+from servos import Servo
 
 app = Flask(__name__)
 
@@ -24,6 +24,8 @@ class Net(nn.Module):
         return x
         
 import ai
+
+servo = Servo()
 
 def change_address(text):
   ip = subprocess.check_output(["hostname", "-I"])
@@ -50,18 +52,19 @@ def set_coordinates():
   coords = request.args.get("coords")
   xCoord = coords.split(":")[0]
   yCoord = coords.split(":")[1]
-  
+
   values = ai.getValues(xCoord, yCoord)
-  servos.set_elbow(values[0])
-  servos.set_shoulder(values[1])
-  servos.set_base(values[2])
+  servo.set_smooth(values)
+  #servo.set_elbowlerp(values[0])
+  #servo.set_shoulderlerp(values[1])
+  #servo.set_baselerp(values[2])
 
 @app.route("/set_servo1")
 
 def set_servo1():
   speed = request.args.get("speed")
   print( "Received " + str(speed))
-  servos.set_grabber(speed)
+  servo.set_grabber(speed)
   return "Received " + str(speed)
 
 @app.route("/set_servo2")
@@ -69,7 +72,7 @@ def set_servo1():
 def set_servo2():
   speed = request.args.get("speed")
   print( "Received " + str(speed))
-  servos.set_elbow(speed)
+  servo.set_elbow(speed)
   return "Received " + str(speed)
 
 @app.route("/set_servo3")
@@ -77,7 +80,7 @@ def set_servo2():
 def set_servo3():
   speed = request.args.get("speed")
   print( "Received " + str(speed))
-  servos.set_shoulder(speed)
+  servo.set_shoulder(speed)
   return "Received " + str(speed)
 
 @app.route("/set_servo4")
@@ -85,7 +88,7 @@ def set_servo3():
 def set_servo4():
   speed = request.args.get("speed")
   print ("Received " + str(speed))
-  servos.set_base(speed)
+  servo.set_base(speed)
   return "Received " + str(speed)
 
 if __name__ == "__main__":
