@@ -91,11 +91,7 @@ def set_servo3():
 def set_servo4():
   speed = request.args.get("speed")
   print ("Received " + str(speed))
-<<<<<<< HEAD
   servo.set_base(speed)
-=======
-  servos.set_base(speed)
->>>>>>> dev
   return "Received " + str(speed)
 
 if __name__ == "__main__":
