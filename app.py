@@ -52,10 +52,7 @@ def set_coordinates():
   coords = request.args.get("coords")
   xCoord = coords.split(":")[0]
   yCoord = coords.split(":")[1]
-<<<<<<< HEAD
-=======
-  
->>>>>>> dev
+
   values = ai.getValues(xCoord, yCoord)
   servo.set_smooth(values)
   #servo.set_elbowlerp(values[0])
