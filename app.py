@@ -52,6 +52,10 @@ def set_coordinates():
   coords = request.args.get("coords")
   xCoord = coords.split(":")[0]
   yCoord = coords.split(":")[1]
+<<<<<<< HEAD
+=======
+  
+>>>>>>> dev
   values = ai.getValues(xCoord, yCoord)
   servo.set_smooth(values)
   #servo.set_elbowlerp(values[0])
@@ -87,7 +91,11 @@ def set_servo3():
 def set_servo4():
   speed = request.args.get("speed")
   print ("Received " + str(speed))
+<<<<<<< HEAD
   servo.set_base(speed)
+=======
+  servos.set_base(speed)
+>>>>>>> dev
   return "Received " + str(speed)
 
 if __name__ == "__main__":
