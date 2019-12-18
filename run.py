@@ -1,20 +1,28 @@
-from lib.model import Model
-import lib.train as trainer
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
 
-model = Model().cpu()
+class Net(nn.Module):
 
-model = trainer.loadModel('xor.net')
-model.eval()
-model.cpu()
+    def __init__(self):
+        super(Net, self).__init__()
+        self.fc1 = nn.Linear(2, 6, True)
+        self.fc2 = nn.Linear(6, 6, True)
+        self.fc3 = nn.Linear(6, 3, True)
 
-print("model loaded")
+    def forward(self, x):
+        x = torch.sigmoid(self.fc1(x))
+        x = self.fc2(x)
+        x = self.fc3(x)
+        return x
 
-trainer.run(model, [0, 0]) # 0 0 0 0
-trainer.run(model, [0.9, -0.5]) # 1 0 0 1
-trainer.run(model, [0, 0], wholeNum=True) # 0 0 0 0
-trainer.run(model, [0.9, -0.5], wholeNum=True) # 1 0 0 1
+net = Net()
+net = torch.load('trained.net')
 
-trainer.run(model, [0, 1]) # 0 0 1 0
-trainer.run(model, [0.2, 0.8]) # 1 0 1 0 
-trainer.run(model, [0, 1], wholeNum=True) # 0 0 1 0
-trainer.run(model, [0.2, 0.8], wholeNum=True) # 1 0 1 0 
+output = net(torch.Tensor([127 / 200, 78 / 200]))
+
+print(output)
+print('========')
+print("base: {}".format(output.data.numpy()[0] * 700))
+print("shoulder: {}".format(output.data.numpy()[1] * 700))
+print("elbow: {}".format(output.data.numpy()[2] * 700))
