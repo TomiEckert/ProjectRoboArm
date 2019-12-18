@@ -48,10 +48,10 @@ def set_servo1():
 
 @app.route("/set_coordinates")
 
-  def set_coordinates():
-    coords = request.args.get("coords")
-    xCoord = coords.split(":")[0];
-    yCoord = coords.split(":")[1];
+def set_coordinates():
+  coords = request.args.get("coords")
+  xCoord = coords.split(":")[0]
+  yCoord = coords.split(":")[1]
 
 @app.route("/set_servo2")
 
