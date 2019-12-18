@@ -32,13 +32,13 @@ def web_interface():
   ip = str(ip).replace(" \\n'", "")
   if len(str(ip).split(" ")):
     ip = str(ip).split(" ")[1]
-  
+
   response = response.replace('<|IP|>', ip)
 
   html.close()
   return response
 
-@app.route("/set_servo1")  
+@app.route("/set_servo1")
 
 def set_servo1():
   speed = request.args.get("speed")
@@ -46,46 +46,52 @@ def set_servo1():
   PCA9685_pwm.set_pwm(0, 0, int(speed))
   return "Received " + str(speed)
 
-@app.route("/set_servo2")  
+@app.route("/set_coordinates")
 
-def set_servo2():  
+  def set_coordinates():
+    coords = request.args.get("coords")
+    xCoord = coords.split(":")[0];
+    yCoord = coords.split(":")[1];
+
+@app.route("/set_servo2")
+
+def set_servo2():
   speed = request.args.get("speed")
   print( "Received " + str(speed))
-  PCA9685_pwm.set_pwm(1, 0, int(speed))  
-  return "Received " + str(speed)  
-
-@app.route("/set_servo3")  
-
-def set_servo3():  
-  speed = request.args.get("speed")
-  print( "Received " + str(speed))
-  PCA9685_pwm.set_pwm(2, 0, int(speed))  
+  PCA9685_pwm.set_pwm(1, 0, int(speed))
   return "Received " + str(speed)
 
-@app.route("/set_servo4")  
+@app.route("/set_servo3")
 
-def set_servo4():  
+def set_servo3():
+  speed = request.args.get("speed")
+  print( "Received " + str(speed))
+  PCA9685_pwm.set_pwm(2, 0, int(speed))
+  return "Received " + str(speed)
+
+@app.route("/set_servo4")
+
+def set_servo4():
   speed = request.args.get("speed")
   print ("Received " + str(speed))
-  PCA9685_pwm.set_pwm(3, 0, int(speed))  
+  PCA9685_pwm.set_pwm(3, 0, int(speed))
   return "Received " + str(speed)
 
-@app.route("/set_servo5")  
+@app.route("/set_servo5")
 
-def set_servo5():  
+def set_servo5():
   speed = request.args.get("speed")
   print( "Received " + str(speed))
-  PCA9685_pwm.set_pwm(4, 0, int(speed))  
+  PCA9685_pwm.set_pwm(4, 0, int(speed))
   return "Received " + str(speed)
 
-@app.route("/set_servo6")  
+@app.route("/set_servo6")
 
-def set_servo6():  
+def set_servo6():
   speed = request.args.get("speed")
   print( "Received " + str(speed))
-  PCA9685_pwm.set_pwm(5, 0, int(speed))  
+  PCA9685_pwm.set_pwm(5, 0, int(speed))
   return "Received " + str(speed)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8181, debug=True)
-
