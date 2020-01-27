@@ -4,6 +4,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import time
+import PixyBlockDetectorThingy
 import subprocess
 from servos import Servo
 
@@ -46,13 +47,22 @@ def web_interface():
   html.close()
   return response
 
+@app.route("/automate")
+
+def automate():
+    print("checking camera")
+    coords = PixyBlockDetectorThingy.get_block_object()
+    print("getting servo values")
+    values = ai.getValues(coords[0],coords[1])
+    print("setting servos")
+    servo.set_smooth(values)
+
 @app.route("/set_coordinates")
 
 def set_coordinates():
   coords = request.args.get("coords")
   xCoord = coords.split(":")[0]
   yCoord = coords.split(":")[1]
-
   values = ai.getValues(xCoord, yCoord)
   servo.set_smooth(values)
   #servo.set_elbowlerp(values[0])

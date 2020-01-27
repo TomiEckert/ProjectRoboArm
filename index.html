@@ -122,13 +122,13 @@
 </style>
   <div id="header">
     <h1>Robot Arm Web Router: Xtreme Durability</h1>
-    <h5>RAWR XD</h5>
   </div>
 
   <div id="sidebar">
     <label for="xCoordinate">X coordinate:</label><input type="number" class="numberInput" value="0" id="xCoordinate"></input>
     <label for="yCoordinate">Y coordinate:</label><input type="number" class="numberInput" value="0" id="yCoordinate"></input>
     <button type="button" class="submitBtn" onclick="sendValues()">Send</button>
+    <button type="button" class="submitBtn" onclick="automate()">Automate</button>
   </div>
 
   <div id="wrapper">
@@ -183,6 +183,16 @@ var slider1 = document.getElementById("range1"); var
         xhttp1.open("GET", "http://<|IP|>:8181/set_servo1?speed=" +
           slider1.value, true); xhttp1.send();
       }
+</script>
+<script>
+function automate(){
+  var xhttp1 = new XMLHttpRequest();
+  xhttp1.onreadystatechange = function automate() {
+    if (this.readyState == 4 && this.status == 200) {
+    }
+  };
+  xhttp1.open("GET", "http://<|IP|>:8181/automate", true); xhttp1.send();
+}
 </script>
 <script> var slider2 = document.getElementById("range2"); var
     output2 = document.getElementById("range2_value"); output2.innerHTML =
