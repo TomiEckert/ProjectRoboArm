@@ -16,7 +16,7 @@ class Blocks (Structure):
     ("m_index", c_uint),
     ("m_age", c_uint) ]
 
-def get_block_object():
+def get_drop_object():
   blocks = BlockArray(1)
   count = pixy.ccc_get_blocks(1, blocks)
   if count > 0:
@@ -29,4 +29,17 @@ def get_block_object():
     return output
   else:
     print("Nothing found")
-      
+
+def get_block_object():
+  blocks = BlockArray(2)
+  count = pixy.ccc_get_blocks(2, blocks)
+  if count > 1:
+    result = ('[BLOCK: SIG=%d X=%2d Y=%3d WIDTH=%3d HEIGHT=%3d]' % (blocks[1].m_signature, blocks[1].m_x, blocks[1].m_y, blocks[1].m_width, blocks[1].m_height))
+    output = []
+    output.append(blocks[1].m_x)
+    output.append(blocks[1].m_y)
+    print(result)
+    print(output)
+    return output
+  else:
+    print("Nothing found")   

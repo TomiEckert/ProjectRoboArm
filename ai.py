@@ -17,7 +17,7 @@ class Net(nn.Module):
         return x
 
 net = Net()
-net = torch.load('/home/pi/ProjectRoboArm/trained.net')
+net = torch.load('/home/pi/trained.net')
 
 output = net(torch.Tensor([135 / 200, 95 / 200]))
 

@@ -25,7 +25,6 @@ class Net(nn.Module):
         return x
         
 import ai
-
 servo = Servo()
 
 def change_address(text):
@@ -56,6 +55,20 @@ def automate():
     values = ai.getValues(coords[0],coords[1])
     print("setting servos")
     servo.set_smooth(values)
+    servo.set_grabber_smooth(440)
+    time.sleep(1)
+    servo.lift_shoulder()
+    time.sleep(1)
+    print("moving arm to default")
+    drop = PixyBlockDetectorThingy.get_drop_object()
+    values_drop = ai.getValues(drop[0],drop[1])
+    servo.move_block(values_drop)
+    time.sleep(1)
+    servo.set_grabber_smooth(370)
+    time.sleep(1)
+    servo.lift_shoulder()
+    time.sleep(1)
+    servo.set_smooth([230, 420, 315])
 
 @app.route("/set_coordinates")
 
